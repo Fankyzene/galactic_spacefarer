@@ -8,7 +8,7 @@ namespace sap.capire.space;
 
   entity Positions {
     key ID: UUID @cuid;
-    title : String(50) @title : 'Position';
+    title : String(100) @title : 'Position';
     }
     
     entity Users {

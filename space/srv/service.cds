@@ -1,6 +1,24 @@
 using { sap.capire.space as my } from '../db/schema';
 
-service SpacefarerService  {
+// Service definition for Spacefarer application
+service SpacefarerService @(restrict: [
+    {
+        grant: 'READ',
+        to   : 'authenticated-user',
+        where: 'originPlanet = $user.originPlanet'
+    }
+]) {
+    entity Departments as projection on my.Departments;
+    entity Positions as projection on my.Positions;
+    entity Users as projection on my.Users;
+}
+
+service AdminService @(restrict: [
+    {
+        grant: '*',
+        to   : 'admin',
+    }
+]) {      
     entity Departments as projection on my.Departments;
     entity Positions as projection on my.Positions;
     entity Users as projection on my.Users;
