@@ -22,6 +22,9 @@
   },
   "cds": {
     "requires": {
+      "AdminService": {
+        "impl": "srv/services.js"
+      },
       "db": {
         "kind": "sqlite",
         "model": "db/schema.cds",

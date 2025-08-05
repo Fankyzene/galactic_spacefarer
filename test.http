@@ -1,12 +1,13 @@
-
-POST  http://localhost:4004/odata/v4/admin/Users
+POST http://localhost:4004/odata/v4/admin/Users
 Authorization: Basic Alice:L1Dl
 Content-Type: application/json
 
 {
-    "fullName" : "Roland the emperor",
-    "originPlanet" : "Endor",
-    "stardustCollection" : 54,
-    "wormholeNavigationSkill" : 9000,
-    "spacesuitColour" : "Blue"
+  "fullName": "Roland the Emperor",
+  "originPlanet": "Endor",
+  "stardustCollection": 54,
+  "wormholeNavigationSkill": 9000,
+  "spacesuitColour": "Blue",
+  "department_ID": "cmdyhth12000208l51qq80qe1",
+  "position_ID": "cmdyi0gyr000908l5hb3dhudn"
 }

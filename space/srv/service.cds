@@ -1,5 +1,6 @@
 using { sap.capire.space as my } from '../db/schema';
 
+@impl: 'srv/service.js'
 // Service definition for Spacefarer application
 service SpacefarerService @(restrict: [
     {
