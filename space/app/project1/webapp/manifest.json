@@ -7,7 +7,7 @@
     "applicationVersion": {
       "version": "0.0.1"
     },
-    "title": "{{appTitle}}",
+    "title": "Space Marine Archive",
     "description": "{{appDescription}}",
     "resources": "resources.json",
     "sourceTemplate": {
@@ -43,14 +43,15 @@
     }
   },
   "sap.ui5": {
-    "flexEnabled": true,
+    "flexEnabled": false,
     "dependencies": {
       "minUI5Version": "1.138.1",
       "libs": {
         "sap.m": {},
         "sap.ui.core": {},
         "sap.ushell": {},
-        "sap.fe.templates": {}
+        "sap.fe.templates": {},
+        "sap.f": {}
       }
     },
     "contentDensities": {
@@ -83,17 +84,28 @@
       "css": []
     },
     "routing": {
-      "config": {},
+      "config": {
+        "flexibleColumnLayout": {
+          "defaultTwoColumnLayoutType": "TwoColumnsBeginExpanded",
+          "defaultThreeColumnLayoutType": "ThreeColumnsMidExpanded"
+        },
+        "routerClass": "sap.f.routing.Router"
+      },
       "routes": [
         {
           "pattern": ":?query:",
           "name": "UsersList",
-          "target": "UsersList"
+          "target": [
+            "UsersList"
+          ]
         },
         {
           "pattern": "Users({key}):?query:",
           "name": "UsersObjectPage",
-          "target": "UsersObjectPage"
+          "target": [
+            "UsersList",
+            "UsersObjectPage"
+          ]
         }
       ],
       "targets": {
@@ -128,7 +140,9 @@
               },
               "initialLoad": "Enabled"
             }
-          }
+          },
+          "controlAggregation": "beginColumnPages",
+          "contextPattern": ""
         },
         "UsersObjectPage": {
           "type": "Component",
@@ -139,9 +153,17 @@
               "editableHeaderContent": false,
               "contextPath": "/Users"
             }
-          }
+          },
+          "controlAggregation": "midColumnPages",
+          "contextPattern": "/Users({key})"
         }
       }
+    },
+    "rootView": {
+      "viewName": "sap.fe.templates.RootContainer.view.Fcl",
+      "type": "XML",
+      "async": true,
+      "id": "appRootView"
     }
   },
   "sap.fiori": {

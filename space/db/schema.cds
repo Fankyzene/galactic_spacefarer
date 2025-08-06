@@ -2,12 +2,12 @@ using { cuid ,managed } from '@sap/cds/common';
 namespace sap.capire.space;
 
   entity Departments {
-    key ID: UUID @cuid;
+    key ID : Integer;
     name: String(100) @title : 'Department';
   }
 
   entity Positions {
-    key ID: UUID @cuid;
+    key ID : Integer;
     title : String(100) @title : 'Position';
     }
     

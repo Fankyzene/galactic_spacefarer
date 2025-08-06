@@ -8,6 +8,6 @@ Content-Type: application/json
   "stardustCollection": 54,
   "wormholeNavigationSkill": 9000,
   "spacesuitColour": "Blue",
-  "department_ID": "cmdyhth12000208l51qq80qe1",
-  "position_ID": "cmdyi0gyr000908l5hb3dhudn"
+  "department_ID": "1",
+  "position_ID": "2"
 }

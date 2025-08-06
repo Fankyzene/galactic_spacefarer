@@ -31,42 +31,16 @@ annotate service.Users with @(
             $Type : 'UI.DataField',
             Value : spacesuitColour,
         },
+        {
+            $Type: 'UI.DataField',
+            Value: department_ID      
+        },
+        {
+            $Type: 'UI.DataField',
+            Value: position_ID
+        },
     ]
 );
-annotate service.Users with {
-    department @Common.ValueList : {
-        $Type : 'Common.ValueListType',
-        CollectionPath : 'Departments',
-        Parameters : [
-            {
-                $Type : 'Common.ValueListParameterInOut',
-                LocalDataProperty : department_ID,
-                ValueListProperty : 'ID',
-            },
-            {
-                $Type : 'Common.ValueListParameterDisplayOnly',
-                ValueListProperty : 'name',
-            },
-        ],
-    }
-};
-annotate service.Users with {
-    position @Common.ValueList : {
-        $Type : 'Common.ValueListType',
-        CollectionPath : 'Positions',
-        Parameters : [
-            {
-                $Type : 'Common.ValueListParameterInOut',
-                LocalDataProperty : position_ID,
-                ValueListProperty : 'ID',
-            },
-            {
-                $Type : 'Common.ValueListParameterDisplayOnly',
-                ValueListProperty : 'title',
-            },
-        ],
-    }
-};
 annotate service.Users with @(
     UI.FieldGroup #GeneratedGroup1 : {
         $Type : 'UI.FieldGroupType',
@@ -91,6 +65,14 @@ annotate service.Users with @(
                 $Type : 'UI.DataField',
                 Value : spacesuitColour,
             },
+            {
+                $Type: 'UI.DataField',
+                Value: department_ID
+            },
+            {
+                $Type: 'UI.DataField',
+                Value: position_ID
+            },
         ],
     },
     UI.Facets : [
@@ -102,3 +84,43 @@ annotate service.Users with @(
         },
     ]
 );
+annotate service.Users with {
+    position @(
+        Common.Text : {
+            $value : position.title,
+            ![@UI.TextArrangement] : #TextOnly
+        },
+        Common.ValueList : {
+            $Type : 'Common.ValueListType',
+            CollectionPath : 'Positions',
+            Parameters : [
+                {
+                    $Type : 'Common.ValueListParameterInOut',
+                    LocalDataProperty : position_ID,
+                    ValueListProperty : 'ID',
+                },
+            ],
+        },
+        Common.ValueListWithFixedValues : true,
+    )
+};
+annotate service.Users with {
+    department @(
+        Common.Text : {
+            $value : department.name,
+            ![@UI.TextArrangement] : #TextOnly
+        },
+        Common.ValueList : {
+            $Type : 'Common.ValueListType',
+            CollectionPath : 'Departments',
+            Parameters : [
+                {
+                    $Type : 'Common.ValueListParameterInOut',
+                    LocalDataProperty : department_ID,
+                    ValueListProperty : 'ID',
+                },
+            ],
+        },
+        Common.ValueListWithFixedValues : true,
+    )
+};
