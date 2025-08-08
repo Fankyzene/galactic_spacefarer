@@ -23,7 +23,7 @@
   "cds": {
     "requires": {
       "AdminService": {
-        "impl": "srv/services.js"
+        "impl": "srv/service.js"
       },
       "db": {
         "kind": "sqlite",
@@ -37,7 +37,7 @@
         "kind": "basic",
         "users": {
           "Alice": {
-            "password": "L1Dl",
+            "password": "4Ld1",
             "roles": [
               "admin"
             ]

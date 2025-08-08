@@ -33,11 +33,11 @@ annotate service.Users with @(
         },
         {
             $Type: 'UI.DataField',
-            Value: department_ID      
+            Value: department_ID,      
         },
         {
             $Type: 'UI.DataField',
-            Value: position_ID
+            Value: position_ID,
         },
     ]
 );
@@ -90,18 +90,7 @@ annotate service.Users with {
             $value : position.title,
             ![@UI.TextArrangement] : #TextOnly
         },
-        Common.ValueList : {
-            $Type : 'Common.ValueListType',
-            CollectionPath : 'Positions',
-            Parameters : [
-                {
-                    $Type : 'Common.ValueListParameterInOut',
-                    LocalDataProperty : position_ID,
-                    ValueListProperty : 'ID',
-                },
-            ],
-        },
-        Common.ValueListWithFixedValues : true,
+        Common.FieldControl : #Optional,
     )
 };
 annotate service.Users with {
@@ -110,17 +99,6 @@ annotate service.Users with {
             $value : department.name,
             ![@UI.TextArrangement] : #TextOnly
         },
-        Common.ValueList : {
-            $Type : 'Common.ValueListType',
-            CollectionPath : 'Departments',
-            Parameters : [
-                {
-                    $Type : 'Common.ValueListParameterInOut',
-                    LocalDataProperty : department_ID,
-                    ValueListProperty : 'ID',
-                },
-            ],
-        },
-        Common.ValueListWithFixedValues : true,
+        Common.FieldControl : #Optional,
     )
 };

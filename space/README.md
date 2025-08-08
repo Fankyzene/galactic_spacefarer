@@ -1,25 +1,56 @@
 # Getting Started
 
-Welcome to your new project.
+Welcome to my Galactic application!
 
-It contains these folders and files, following our recommended project layout:
+# CAP Project with SQLite
 
-File or Folder | Purpose
----------|----------
-`app/` | content for UI frontends goes here
-`db/` | your domain models and data go here
-`srv/` | your service models and code go here
-`package.json` | project metadata and configuration
-`readme.md` | this getting started guide
+## Requirements
+
+- **Node.js**: version **20** or higher
+- **@sap/cds (CAP CLI)**: version **9** or higher
+- **SQLite3 **: version **2.0.2** or higher
 
 
-## Next Steps
+Setup:
 
-- Open a new terminal and run `cds watch`
-- (in VS Code simply choose _**Terminal** > Run Task > cds watch_)
-- Start adding content, for example, a [db/schema.cds](db/schema.cds).
+- Clone the repository from Git
+    cd <project-folder>
+- Install dependencies:
+    npm install
+    bash
+- Install SQLite
+    npm add @cap-js/sqlite -D
+    bash
+- Run database deploy
+    cds deploy --to sqlite
+- Start the application
+    cds watch
+
+You can reach the application here:
+http://localhost:4004/project1/webapp/index.html
 
 
-## Learn More
+Project Structure
+.
+├── db/               # Database models (.cds files)
+├── srv/              # Service definitions (.cds/.js files)
+├── package.json
+├── README.md
+└── db.sqlite         # SQLite database (generated after deploy)
 
-Learn more at https://cap.cloud.sap/docs/get-started/.
+## Authentication
+
+The service is protected by basic auth. The following users are pre-configured:
+
+Username	        Password	Roles
+Alice	            4Ld1	    admin
+authenticated-user	            user
+
+With admin role, you can create/read/update/delete any Spacefarer.
+
+Other users can only read Spacefarers on their own planet.
+
+
+## Test 
+
+Test POST call in "test.http" in root, with autentication.
